@@ -1,4 +1,4 @@
-import { useVehicleTypesQuery } from "../../hooks/useVehicleTypesQuery";
+import { useVehicleTypesQuery } from "../../hooks/reactQuery/useVehicleTypesQuery";
 import { VehicleTable } from "../../types";
 import { LocalText } from "../LocalText";
 import Tippy from "@tippyjs/react/headless";

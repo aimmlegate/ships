@@ -1,8 +1,8 @@
-import { Vehicle, VehicleTable, VehicleTypeName } from "../types";
+import { Vehicle, VehicleTable, VehicleTypeName } from "../../types";
 import { useLiveQuery } from "dexie-react-hooks";
 import { groupBy } from "lodash";
-import { db } from "../db";
-import { NationName } from "../types";
+import { db } from "../../db";
+import { NationName } from "../../types";
 
 interface UseVehicleQuery {
   nation: NationName;

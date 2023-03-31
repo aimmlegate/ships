@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { API } from "../api";
+import { API } from "../../api";
 
-import { VehicleTypeResponse } from "../types";
+import { VehicleTypeResponse } from "../../types";
 
 export function useVehicleTypesQuery() {
   return useQuery<VehicleTypeResponse>(["useVehicleTypes"], async () =>

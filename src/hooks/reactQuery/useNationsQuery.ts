@@ -1,6 +1,6 @@
-import { API } from "./../api";
+import { API } from "../../api";
 import { useQuery } from "@tanstack/react-query";
-import { Nation } from "../types";
+import { Nation } from "../../types";
 
 
 export function useNationsQuery() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { MEDIA_PATH } from "../../constants";
-import { useNationsQuery } from "../../hooks/useNationsQuery";
+import { useNationsQuery } from "../../hooks/reactQuery/useNationsQuery";
 import { NationName, VehicleTable, VehicleType } from "../../types";
 import { LevelIndicator } from "../LevelIndicator";
 import { LocalText } from "../LocalText";

@@ -7,8 +7,8 @@ import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persist
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { CircularLoader } from "./components/CircularLoader";
 import { Root } from "./components/Root";
-import { useFillVehiclesDb } from "./hooks/useFillVehiclesDB";
-import { useIsVehiclesDbEmpty } from "./hooks/useIsVehiclesDBEmpty";
+import { useFillVehiclesDb } from "./hooks/indexedDb/useFillVehiclesDb";
+import { useIsVehiclesDbEmpty } from "./hooks/indexedDb/useIsVehiclesDbEmpty";
 
 const queryClient = new QueryClient({
   defaultOptions: {

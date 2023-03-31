@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { API } from "../api";
-import { db } from "../db";
-import { VehicleTable, VehicleTypeName } from "../types";
+import { API } from "../../api";
+import { db } from "../../db";
+import { VehicleTable, VehicleTypeName } from "../../types";
 
 export function useFillVehiclesDb(): { loading: boolean; error: string } {
   const [error, setError] = useState("");

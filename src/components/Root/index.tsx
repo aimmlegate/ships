@@ -1,4 +1,4 @@
-import { useNationsQuery } from "../../hooks/useNationsQuery";
+import { useNationsQuery } from "../../hooks/reactQuery/useNationsQuery";
 import { NationSelector } from "../NationSelector";
 
 
