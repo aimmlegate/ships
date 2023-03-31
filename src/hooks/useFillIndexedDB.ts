@@ -12,6 +12,8 @@ export function useFillIndexedDB(): { loading: boolean; error: string } {
       try {
         const data = await API.fetchVehicles();
 
+        console.log(data)
+
         const vehiclesArray: VehicleTable[] = Object.entries(data).map(
           ([id, value]) => {
             return { id, type: value.tags[0] as VehicleTypeName, ...value };
