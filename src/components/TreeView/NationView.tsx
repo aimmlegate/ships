@@ -4,6 +4,7 @@ import { useVehicleQuery } from "../../hooks/useVehicleQuery";
 import { useVehicleTypesQuery } from "../../hooks/useVehicleTypesQuery";
 import { NationName, VehicleType, VehicleTypeName } from "../../types";
 import { LocalText } from "../LocalText/LocalText";
+import { ShipDetailView } from "../ShipDetailView/ShipDetailView";
 import { VehicleTypeIcon } from "../VehicleTypeIcon/VehicleTypeIcon";
 import { VehicleTypeLineView } from "./VehicleTypeLineView";
 
@@ -45,7 +46,7 @@ export const NationView: React.FC<Props> = ({ nation }) => {
             <div
               onMouseOver={() => handleMouseOver(typeName)}
               onMouseOut={() => handleMouseOut()}
-              className="flex pl-2 align-middle h-[40px] items-center sticky top-0 z-50"
+              className="flex pl-3 align-middle h-[40px] items-center sticky top-0 z-50"
             >
               <VehicleTypeIcon>{vehicleType.icons}</VehicleTypeIcon>
               <p className="text-white pl-1">
@@ -66,7 +67,7 @@ export const NationView: React.FC<Props> = ({ nation }) => {
         <div
           onMouseOver={() => handleMouseOver("Premium")}
           onMouseOut={() => handleMouseOut()}
-          className="flex pl-2 align-middle h-[40px] items-center sticky top-0 z-50"
+          className="flex pl-5 align-middle h-[40px] items-center sticky top-0 z-50"
         >
           <p className="text-amber-400">
             <span>Premium</span>

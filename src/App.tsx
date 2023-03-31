@@ -36,16 +36,10 @@ function App() {
       client={queryClient}
       persistOptions={{ persister: persister }}
     >
-      <TreeView />;
+      <TreeView />
       <ReactQueryDevtools initialIsOpen={false} />
     </PersistQueryClientProvider>
   );
 }
 
 export default App;
-function persistQueryClient(arg0: {
-  queryClient: QueryClient;
-  persister: any;
-}) {
-  throw new Error("Function not implemented.");
-}
