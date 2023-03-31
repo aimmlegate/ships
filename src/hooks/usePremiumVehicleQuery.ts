@@ -1,4 +1,3 @@
-import { Vehicle } from "../types";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db";
 import { NationName } from "../types";

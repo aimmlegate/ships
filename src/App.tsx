@@ -1,5 +1,4 @@
 import "./index.css";
-import { TreeView } from "./components/TreeView/TreeView";
 
 import { QueryClient } from "@tanstack/react-query";
 import { useIsIndexedDBEmpty } from "./hooks/useIsIndexedDBEmpty";
@@ -7,7 +6,8 @@ import { useFillIndexedDB } from "./hooks/useFillIndexedDB";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
-import { CircularLoader } from "./components/CircularLoader/CircularLoader";
+import { CircularLoader } from "./components/CircularLoader";
+import { Root } from "./components/Root";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,7 +28,6 @@ function App() {
   if (isEmpty === undefined) {
     return (
       <div className="h-[100vh]">
-        {" "}
         <CircularLoader />
       </div>
     );
@@ -46,7 +45,7 @@ function App() {
       client={queryClient}
       persistOptions={{ persister: persister }}
     >
-      <TreeView />
+      <Root />
       <ReactQueryDevtools initialIsOpen={false} />
     </PersistQueryClientProvider>
   );

@@ -2,8 +2,8 @@ import React from "react";
 import { MEDIA_PATH } from "../../constants";
 import { useNationsQuery } from "../../hooks/useNationsQuery";
 import { NationName, VehicleTable, VehicleType } from "../../types";
-import { LevelView } from "../LevelView/LevelView";
-import { LocalText } from "../LocalText/LocalText";
+import { LevelIndicator } from "../LevelIndicator";
+import { LocalText } from "../LocalText";
 
 interface Props {
   vehicle: VehicleTable;
@@ -11,7 +11,7 @@ interface Props {
   nation: NationName;
 }
 
-export const ShipDetailView: React.FC<Props> = ({
+export const ShipDetailsCard: React.FC<Props> = ({
   vehicle,
   vehicleType,
   nation,
@@ -38,9 +38,9 @@ export const ShipDetailView: React.FC<Props> = ({
               isPremium ? vehicleType.icons.premium : vehicleType.icons.default
             }`}
           />
-          <LevelView className="pr-1 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+          <LevelIndicator className="pr-1 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
             {vehicle.level}
-          </LevelView>
+          </LevelIndicator>
           <LocalText className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
             {vehicle.localization.mark}
           </LocalText>

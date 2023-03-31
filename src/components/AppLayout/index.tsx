@@ -5,7 +5,7 @@ interface Props {
   content: React.ReactNode;
 }
 
-export const Layout: React.FC<Props> = ({ sidebar, content }) => {
+export const AppLayout: React.FC<Props> = ({ sidebar, content }) => {
   return (
     <div className="flex">
       <div className="w-[100%] h-[40px] fixed z-50 bg-zinc-800 border-b border-zinc-600 bg-gradient-to-r from-zinc-800 to-gray-900 shadow-xl" />

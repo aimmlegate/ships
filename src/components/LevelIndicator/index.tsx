@@ -19,6 +19,6 @@ interface Props {
   className?: string;
 }
 
-export const LevelView: React.FC<Props> = ({ children, className }) => {
+export const LevelIndicator: React.FC<Props> = ({ children, className }) => {
   return <span className={className}>{levelsMap.get(children)}</span>;
 };

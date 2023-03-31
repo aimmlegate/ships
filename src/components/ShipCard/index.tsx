@@ -1,17 +1,18 @@
 import { useVehicleTypesQuery } from "../../hooks/useVehicleTypesQuery";
 import { VehicleTable } from "../../types";
-import { LocalText } from "../LocalText/LocalText";
-import { VehicleIcon } from "../VehicleIcon/VehicleIcon";
-import { VehicleTypeIcon } from "../VehicleTypeIcon/VehicleTypeIcon";
-import { LevelView } from "../LevelView/LevelView";
-import { ShipDetailView } from "../ShipDetailView/ShipDetailView";
+import { LocalText } from "../LocalText";
+import { VehicleIcon } from "../VehicleIcon_DELETE/VehicleIcon";
+import { VehicleTypeIcon } from "../VehicleTypeIcon_DELETE/VehicleTypeIcon";
+import { LevelIndicator } from "../LevelIndicator";
 import Tippy from "@tippyjs/react/headless";
+import { ShipDetailsCard } from "../ShipDetailsCard";
+import { MEDIA_PATH } from "../../constants";
 
 interface Props {
   vehicle: VehicleTable;
 }
 
-export const ShipView: React.FC<Props> = ({ vehicle }) => {
+export const ShipCard: React.FC<Props> = ({ vehicle }) => {
   const { data } = useVehicleTypesQuery();
   if (!data) {
     return null;
@@ -22,7 +23,7 @@ export const ShipView: React.FC<Props> = ({ vehicle }) => {
     <Tippy
       placement="right"
       render={() => (
-        <ShipDetailView
+        <ShipDetailsCard
           vehicle={vehicle}
           vehicleType={vehicleType}
           nation={vehicle.nation}
@@ -42,17 +43,15 @@ export const ShipView: React.FC<Props> = ({ vehicle }) => {
           <VehicleTypeIcon type={isPremium ? "premium" : "default"}>
             {vehicleType?.icons}
           </VehicleTypeIcon>
-          <LevelView className="pl-1 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+          <LevelIndicator className="pl-1 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
             {vehicle.level}
-          </LevelView>
+          </LevelIndicator>
         </div>
-        <VehicleIcon
-          className="absolute left-0 bottom-1 h-[70px] z-0"
-          type="default"
+        <img
           alt={vehicle.name}
-        >
-          {vehicle.icons}
-        </VehicleIcon>
+          className="absolute left-0 bottom-1 h-[70px] z-0"
+          src={`${MEDIA_PATH}${vehicle.icons.default}`}
+        />
         <div
           className={`text-right font-medium uppercase z-10 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
             isPremium ? "text-amber-400" : "text-white"

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNationsQuery } from "../../hooks/useNationsQuery";
 import { Nation, NationName } from "../../types";
 import { Layout } from "../Layout/Layout";
-import { NationsMenu } from "../NationsMenu/NationsMenu";
+import { NationsMenu } from "../NationsMenu";
 import { NationView } from "./NationView";
 
 interface Props {
