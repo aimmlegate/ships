@@ -26,7 +26,12 @@ function App() {
   const { loading } = useFillIndexedDB();
 
   if (isEmpty === undefined) {
-    return <CircularLoader />;
+    return (
+      <div className="h-[100vh]">
+        {" "}
+        <CircularLoader />
+      </div>
+    );
   }
 
   if (isEmpty && loading) {
