@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { MEDIA_PATH } from "../../constants";
-import { usePremiumVehicleQuery } from "../../hooks/indexedDb/usePremiumVehicleQuery";
-import { useVehicleQuery } from "../../hooks/indexedDb/useVehicleQuery";
-import { useVehicleTypesQuery } from "../../hooks/reactQuery/useVehicleTypesQuery";
-import { NationName, VehicleType, VehicleTypeName } from "../../types";
-import { LocalText } from "../LocalText";
-import { StylingWrapper } from "./StylingWrapper";
-import { VehicleTypeBranch } from "./VehicleTypeBranch";
+import { useState } from 'react';
+
+import { MEDIA_PATH } from '../../constants';
+import { usePremiumVehicleQuery } from '../../hooks/indexedDb/usePremiumVehicleQuery';
+import { useVehicleQuery } from '../../hooks/indexedDb/useVehicleQuery';
+import { useVehicleTypesQuery } from '../../hooks/reactQuery/useVehicleTypesQuery';
+import { NationName, VehicleType, VehicleTypeName } from '../../types';
+import { LocalText } from '../LocalText';
+import { StylingWrapper } from './StylingWrapper';
+import { VehicleTypeBranch } from './VehicleTypeBranch';
 
 interface Props {
   nation: NationName;
@@ -16,13 +17,13 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
   const vehicles = useVehicleQuery({ nation });
   const premiumVehicles = usePremiumVehicleQuery({ nation });
   const { data } = useVehicleTypesQuery();
-  const [active, setActive] = useState<VehicleTypeName | "Premium">();
+  const [active, setActive] = useState<VehicleTypeName | 'Premium'>();
 
   if (!vehicles || !data || !premiumVehicles) {
     return null;
   }
 
-  const handleMouseOver = (t: VehicleTypeName | "Premium") => {
+  const handleMouseOver = (t: VehicleTypeName | 'Premium') => {
     setActive(t);
   };
 
@@ -30,9 +31,10 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
     setActive(undefined);
   };
 
-  const vehicleTypesPairs: [VehicleTypeName, VehicleType][] = Object.keys(
-    data
-  ).map((key) => [key as VehicleTypeName, data[key as VehicleTypeName]]);
+  const vehicleTypesPairs: [VehicleTypeName, VehicleType][] = Object.keys(data).map((key) => [
+    key as VehicleTypeName,
+    data[key as VehicleTypeName],
+  ]);
 
   return (
     <>
@@ -65,7 +67,7 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
       })}
       <div>
         <div
-          onMouseOver={() => handleMouseOver("Premium")}
+          onMouseOver={() => handleMouseOver('Premium')}
           onMouseOut={() => handleMouseOut()}
           className="flex pl-5 align-middle h-[40px] items-center sticky top-0 z-50"
         >
@@ -75,8 +77,8 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
         </div>
 
         <StylingWrapper
-          isActive={active === "Premium"}
-          isNonActive={active !== undefined && active !== "Premium"}
+          isActive={active === 'Premium'}
+          isNonActive={active !== undefined && active !== 'Premium'}
         >
           <VehicleTypeBranch line={premiumVehicles} />
         </StylingWrapper>

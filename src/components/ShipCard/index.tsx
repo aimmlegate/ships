@@ -1,10 +1,11 @@
-import { useVehicleTypesQuery } from "../../hooks/reactQuery/useVehicleTypesQuery";
-import { VehicleTable } from "../../types";
-import { LocalText } from "../LocalText";
-import Tippy from "@tippyjs/react/headless";
-import { MEDIA_PATH } from "../../constants";
-import { LevelIndicator } from "../LevelIndicator";
-import { ShipDetailsCard } from "./ShipDetailsCard";
+import Tippy from '@tippyjs/react/headless';
+
+import { MEDIA_PATH } from '../../constants';
+import { useVehicleTypesQuery } from '../../hooks/reactQuery/useVehicleTypesQuery';
+import { VehicleTable } from '../../types';
+import { LevelIndicator } from '../LevelIndicator';
+import { LocalText } from '../LocalText';
+import { ShipDetailsCard } from './ShipDetailsCard';
 
 interface Props {
   vehicle: VehicleTable;
@@ -15,18 +16,14 @@ export const ShipCard: React.FC<Props> = ({ vehicle }) => {
   if (!data) {
     return null;
   }
-  const isPremium = vehicle.tags.includes("uiPremium");
+  const isPremium = vehicle.tags.includes('uiPremium');
   const vehicleType = data[vehicle.type];
-  const iconUrlType = isPremium ? "premium" : "default";
+  const iconUrlType = isPremium ? 'premium' : 'default';
   return (
     <Tippy
       placement="right"
       render={() => (
-        <ShipDetailsCard
-          vehicle={vehicle}
-          vehicleType={vehicleType}
-          nation={vehicle.nation}
-        />
+        <ShipDetailsCard vehicle={vehicle} vehicleType={vehicleType} nation={vehicle.nation} />
       )}
     >
       <div
@@ -36,7 +33,7 @@ export const ShipCard: React.FC<Props> = ({ vehicle }) => {
       >
         <div
           className={`font-medium flex items-center z-10 ${
-            isPremium ? "text-amber-400" : "text-white"
+            isPremium ? 'text-amber-400' : 'text-white'
           }`}
         >
           <img src={`${MEDIA_PATH}${vehicleType.icons[iconUrlType]}`} />
@@ -51,7 +48,7 @@ export const ShipCard: React.FC<Props> = ({ vehicle }) => {
         />
         <div
           className={`text-right font-medium uppercase z-10 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
-            isPremium ? "text-amber-400" : "text-white"
+            isPremium ? 'text-amber-400' : 'text-white'
           }`}
         >
           <LocalText>{vehicle.localization.shortmark}</LocalText>

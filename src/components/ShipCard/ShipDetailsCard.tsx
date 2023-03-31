@@ -1,9 +1,10 @@
-import React from "react";
-import { MEDIA_PATH } from "../../constants";
-import { useNationsQuery } from "../../hooks/reactQuery/useNationsQuery";
-import { NationName, VehicleTable, VehicleType } from "../../types";
-import { LevelIndicator } from "../LevelIndicator";
-import { LocalText } from "../LocalText";
+import React from 'react';
+
+import { MEDIA_PATH } from '../../constants';
+import { useNationsQuery } from '../../hooks/reactQuery/useNationsQuery';
+import { NationName, VehicleTable, VehicleType } from '../../types';
+import { LevelIndicator } from '../LevelIndicator';
+import { LocalText } from '../LocalText';
 
 interface Props {
   vehicle: VehicleTable;
@@ -11,25 +12,19 @@ interface Props {
   nation: NationName;
 }
 
-export const ShipDetailsCard: React.FC<Props> = ({
-  vehicle,
-  vehicleType,
-  nation,
-}) => {
+export const ShipDetailsCard: React.FC<Props> = ({ vehicle, vehicleType, nation }) => {
   const { data } = useNationsQuery();
   if (!data) {
     return null;
   }
   const currentNation = data.find((n) => n.name === nation);
-  const isPremium = vehicle.tags.some(
-    (tag) => tag === "premium" || tag === "uiPremium"
-  );
+  const isPremium = vehicle.tags.some((tag) => tag === 'premium' || tag === 'uiPremium');
   return (
     <div className="border border-slate-500 bg-gray-900 w-[250px] z-10">
       <div className="h-[150px] relative  border-b border-slate-700">
         <div
           className={`flex items-center  uppercase font-medium relative z-10 p-1 ${
-            isPremium ? "text-amber-400" : "text-white"
+            isPremium ? 'text-amber-400' : 'text-white'
           }`}
         >
           <img
@@ -47,10 +42,7 @@ export const ShipDetailsCard: React.FC<Props> = ({
         </div>
 
         {currentNation && (
-          <img
-            className="absolute top-0"
-            src={`${MEDIA_PATH}${currentNation.icons.large}`}
-          />
+          <img className="absolute top-0" src={`${MEDIA_PATH}${currentNation.icons.large}`} />
         )}
         <img
           className="absolute top-0 left-0 right-0 bottom-0 m-auto w-[180px]"

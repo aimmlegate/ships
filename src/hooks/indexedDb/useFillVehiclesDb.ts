@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
-import { API } from "../../api";
-import { db } from "../../db";
-import { VehicleTable, VehicleTypeName } from "../../types";
+import { useEffect, useState } from 'react';
+
+import { API } from '../../api';
+import { db } from '../../db';
+import { VehicleTable, VehicleTypeName } from '../../types';
 
 export function useFillVehiclesDb(): { loading: boolean; error: string } {
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -12,11 +13,13 @@ export function useFillVehiclesDb(): { loading: boolean; error: string } {
       try {
         const data = await API.fetchVehicles();
 
-        const vehiclesArray: VehicleTable[] = Object.entries(data).map(
-          ([id, value]) => {
-            return { id, type: value.tags[0] as VehicleTypeName, ...value };
-          }
-        );
+        const vehiclesArray: VehicleTable[] = Object.entries(data).map(([id, value]) => {
+          return {
+            id,
+            type: value.tags[0] as VehicleTypeName,
+            ...value,
+          };
+        });
 
         await db.vehicles.bulkAdd(vehiclesArray);
       } catch (error) {

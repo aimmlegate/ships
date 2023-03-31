@@ -1,30 +1,30 @@
 export enum NationName {
-  ussr = "ussr",
-  japan = "japan",
-  usa = "usa",
-  uk = "uk",
-  germany = "germany",
-  france = "france",
-  italy = "italy",
-  europe = "europe",
-  panAsia = "pan_asia",
-  commonwealth = "commonwealth",
-  panAmerica = "pan_america",
-  netherlands = "netherlands",
-  spain = "spain",
+  ussr = 'ussr',
+  japan = 'japan',
+  usa = 'usa',
+  uk = 'uk',
+  germany = 'germany',
+  france = 'france',
+  italy = 'italy',
+  europe = 'europe',
+  panAsia = 'pan_asia',
+  commonwealth = 'commonwealth',
+  panAmerica = 'pan_america',
+  netherlands = 'netherlands',
+  spain = 'spain',
 }
 
 export enum VehicleTypeName {
-  Cruiser = "Cruiser",
-  AirCarrier = "AirCarrier",
-  Battleship = "Battleship",
-  Destroyer = "Destroyer",
-  Submarine = "Submarine",
+  Cruiser = 'Cruiser',
+  AirCarrier = 'AirCarrier',
+  Battleship = 'Battleship',
+  Destroyer = 'Destroyer',
+  Submarine = 'Submarine',
 }
 
 export type LocalizationData = Record<string, string>;
 
-export type VehicleTypeIconType = "default" | "premium";
+export type VehicleTypeIconType = 'default' | 'premium';
 
 export type VehicleTypeIconUrls = Record<VehicleTypeIconType, string>;
 

@@ -1,7 +1,8 @@
-import React from "react";
-import { MEDIA_PATH } from "../../constants";
-import { Nation, NationName } from "../../types";
-import { LocalText } from "../LocalText";
+import React from 'react';
+
+import { MEDIA_PATH } from '../../constants';
+import { Nation, NationName } from '../../types';
+import { LocalText } from '../LocalText';
 
 interface Props {
   nations: Nation[];
@@ -11,11 +12,7 @@ interface Props {
 
 // TODO: check hovers
 
-export const NationsMenu: React.FC<Props> = ({
-  nations,
-  handleSwitch,
-  active,
-}) => {
+export const NationsMenu: React.FC<Props> = ({ nations, handleSwitch, active }) => {
   return (
     <div className="flex flex-col">
       {nations.map((nation) => (
@@ -24,7 +21,7 @@ export const NationsMenu: React.FC<Props> = ({
           disabled={active === nation.name}
           onClick={() => handleSwitch(nation.name)}
           className={`flex items-center p-2 h-[40px] mb-1 nation-button-gradient hover:nation-button-gradient-hover ${
-            active === nation.name ? "nation-button-gradient-active" : ""
+            active === nation.name ? 'nation-button-gradient-active' : ''
           }`}
         >
           <img
@@ -34,7 +31,7 @@ export const NationsMenu: React.FC<Props> = ({
           />
           <p
             className={`${
-              active === nation.name ? "text-black" : "text-white"
+              active === nation.name ? 'text-black' : 'text-white'
             } font-medium uppercase`}
           >
             <LocalText>{nation.localization.mark}</LocalText>

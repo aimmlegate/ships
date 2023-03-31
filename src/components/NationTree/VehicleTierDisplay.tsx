@@ -1,5 +1,5 @@
-import { VehicleTable } from "../../types";
-import { ShipCard } from "../ShipCard";
+import { VehicleTable } from '../../types';
+import { ShipCard } from '../ShipCard';
 
 type Props = {
   tier?: VehicleTable[];

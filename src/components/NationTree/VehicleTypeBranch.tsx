@@ -1,14 +1,15 @@
-import { groupBy } from "lodash";
-import { TIERS } from "../../constants";
-import { VehicleTable } from "../../types";
-import { VehicleTierDisplay } from "./VehicleTierDisplay";
+import { groupBy } from 'lodash';
+
+import { TIERS } from '../../constants';
+import { VehicleTable } from '../../types';
+import { VehicleTierDisplay } from './VehicleTierDisplay';
 
 interface Props {
   line: VehicleTable[];
 }
 
 export const VehicleTypeBranch: React.FC<Props> = ({ line }) => {
-  const groupedByLevel = groupBy(line, "level");
+  const groupedByLevel = groupBy(line, 'level');
   const rows = [...Array(TIERS).keys()];
 
   return (

@@ -1,14 +1,13 @@
-import "./index.css";
+import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
+import { QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 
-import { QueryClient } from "@tanstack/react-query";
-
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
-import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
-import { CircularLoader } from "./components/CircularLoader";
-import { Root } from "./components/Root";
-import { useFillVehiclesDb } from "./hooks/indexedDb/useFillVehiclesDb";
-import { useIsVehiclesDbEmpty } from "./hooks/indexedDb/useIsVehiclesDbEmpty";
+import { CircularLoader } from './components/CircularLoader';
+import { Root } from './components/Root';
+import { useFillVehiclesDb } from './hooks/indexedDb/useFillVehiclesDb';
+import { useIsVehiclesDbEmpty } from './hooks/indexedDb/useIsVehiclesDbEmpty';
+import './index.css';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,10 +41,7 @@ function App() {
     );
   }
   return (
-    <PersistQueryClientProvider
-      client={queryClient}
-      persistOptions={{ persister: persister }}
-    >
+    <PersistQueryClientProvider client={queryClient} persistOptions={{ persister: persister }}>
       <Root />
       <ReactQueryDevtools initialIsOpen={false} />
     </PersistQueryClientProvider>

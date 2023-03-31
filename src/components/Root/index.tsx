@@ -1,6 +1,5 @@
-import { useNationsQuery } from "../../hooks/reactQuery/useNationsQuery";
-import { NationSelector } from "../NationSelector";
-
+import { useNationsQuery } from '../../hooks/reactQuery/useNationsQuery';
+import { NationSelector } from '../NationSelector';
 
 export const Root = () => {
   const { data } = useNationsQuery();
@@ -11,4 +10,3 @@ export const Root = () => {
 
   return <NationSelector nations={data} />;
 };
-
