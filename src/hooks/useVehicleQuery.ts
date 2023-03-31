@@ -1,4 +1,4 @@
-import { Vehicle, VehicleTypeName } from "../types";
+import { Vehicle, VehicleTable, VehicleTypeName } from "../types";
 import { useLiveQuery } from "dexie-react-hooks";
 import { groupBy } from "lodash";
 import { db } from "../db";
@@ -10,7 +10,7 @@ interface UseVehicleQuery {
 
 export function useVehicleQuery({
   nation,
-}: UseVehicleQuery): Partial<Record<VehicleTypeName, Vehicle[]>> | undefined {
+}: UseVehicleQuery): Partial<Record<VehicleTypeName, VehicleTable[]>> | undefined {
   return useLiveQuery(async () => {
     const vehicles = await db.vehicles
       .where({ nation })

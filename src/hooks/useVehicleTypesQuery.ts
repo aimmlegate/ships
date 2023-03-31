@@ -1,17 +1,10 @@
-import { useLiveQuery } from "dexie-react-hooks";
+import { useQuery } from "@tanstack/react-query";
+import { API } from "../api";
 
-import { db } from "../db";
-import { VehicleType, VehicleTypeName } from "../types";
+import { VehicleTypeResponse } from "../types";
 
-interface UseVehicleTypesQuery {
-  type: VehicleTypeName;
-}
-
-export function useVehicleTypesQuery({
-  type,
-}: UseVehicleTypesQuery): VehicleType | undefined {
-  return useLiveQuery(async () => {
-    const [vehiclesType] = await db.vehiclesTypes.where({ id: type }).toArray();
-    return vehiclesType;
-  }, [type]);
+export function useVehicleTypesQuery() {
+  return useQuery<VehicleTypeResponse>(["useVehicleTypes"], async () =>
+    API.fetchVehicleTypes()
+  );
 }

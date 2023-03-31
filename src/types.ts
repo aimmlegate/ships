@@ -37,29 +37,37 @@ export interface Localization {
 }
 
 export interface Vehicle {
-  id: string;
   level: number;
   name: string;
   icons: VehicleIconUrls;
-  type: VehicleTypeName;
   tags: string[];
   nation: NationName;
   localization: Localization;
 }
 
+export interface VehicleTable extends Vehicle {
+  id: string;
+  type: VehicleTypeName;
+}
+
+export type VehicleResponse = Record<string, Vehicle>;
+
 export interface Nation {
+  id: number;
   name: NationName;
   icons: Record<string, string>;
   color: number;
   tags: string[];
   localization: Localization;
-  id: number;
 }
 
+export type NationResponse = Nation[];
+
 export interface VehicleType {
-  id: VehicleTypeName;
-  icons: VehicleTypeIconUrls
+  icons: VehicleTypeIconUrls;
   sort_order: number;
   localization: Localization;
   name: string;
 }
+
+export type VehicleTypeResponse = Record<VehicleTypeName, VehicleType>;

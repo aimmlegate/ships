@@ -1,13 +1,14 @@
-import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "../db";
+import { API } from "./../api";
+import { useQuery } from "@tanstack/react-query";
 import { Nation } from "../types";
 
-export function useNationsQuery(): Nation[] | undefined {
-  return useLiveQuery(async () => {
-    const nations = (await db.nations.toArray())
-      .filter((n) => n.tags.includes("inTree"))
-      .filter((n) => !n.tags.includes("hidden"))
-      .sort((a, b) => a.id - b.id);
-    return nations;
-  }, []);
+
+export function useNationsQuery() {
+  return useQuery<Nation[]>(["nations"], async () => API.fetchNations(), {
+    select: (nation) =>
+      nation
+        .filter((n) => n.tags.includes("inTree"))
+        .filter((n) => !n.tags.includes("hidden"))
+        .sort((a, b) => a.id - b.id),
+  });
 }

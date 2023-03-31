@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { NATIONS_PATH, VEHICLES_PATH, VEHICLES_TYPES_PATH } from "../constants";
+import { API } from "../api";
 import { db } from "../db";
+import { VehicleTable, VehicleTypeName } from "../types";
 
 export function useFillIndexedDB(): { loading: boolean; error: string } {
   const [error, setError] = useState("");
@@ -9,33 +10,15 @@ export function useFillIndexedDB(): { loading: boolean; error: string } {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [vehicles, nations, vehiclesTypes] = await Promise.all([
-          fetch(VEHICLES_PATH).then((response) => response.json()),
-          fetch(NATIONS_PATH).then((response) => response.json()),
-          fetch(VEHICLES_TYPES_PATH).then((response) => response.json()),
-        ]);
+        const data = await API.fetchVehicles();
 
-        const vehiclesArray = Object.entries(vehicles.data).map(
-          ([id, value]: any) => {
-            return { id, type: value.tags[0], ...value };
-          }
-        );
-        const nationsArray = Object.entries(nations.data).map(
-          ([id, value]: any) => {
-            return { id, ...value };
-          }
-        );
-        const vehiclesTypesArray = Object.entries(vehiclesTypes.data).map(
-          ([id, value]: any) => {
-            return { id, ...value };
+        const vehiclesArray: VehicleTable[] = Object.entries(data).map(
+          ([id, value]) => {
+            return { id, type: value.tags[0] as VehicleTypeName, ...value };
           }
         );
 
-        await Promise.all([
-          await db.vehicles.bulkAdd(vehiclesArray),
-          await db.nations.bulkAdd(nationsArray),
-          await db.vehiclesTypes.bulkAdd(vehiclesTypesArray),
-        ]);
+        await db.vehicles.bulkAdd(vehiclesArray);
       } catch (error) {
         setError(`Error fetching data: ${error}`);
       } finally {

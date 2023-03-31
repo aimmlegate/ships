@@ -1,7 +1,7 @@
 import { groupBy } from "lodash";
 import { useState } from "react";
 import { TIERS } from "../../constants";
-import { Vehicle, VehicleType } from "../../types";
+import { Vehicle } from "../../types";
 import { VehicleTierView } from "./VehicleTierView";
 
 interface Props {

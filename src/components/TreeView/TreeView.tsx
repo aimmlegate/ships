@@ -36,11 +36,11 @@ const NationSwitcher: React.FC<Props> = ({ nations }) => {
 };
 
 export const TreeView = () => {
-  const nations = useNationsQuery();
+  const { data } = useNationsQuery();
 
-  if (!nations) {
+  if (!data) {
     return null;
   }
 
-  return <NationSwitcher nations={nations} />;
+  return <NationSwitcher nations={data} />;
 };

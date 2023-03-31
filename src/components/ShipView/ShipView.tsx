@@ -1,17 +1,21 @@
 import { useVehicleTypesQuery } from "../../hooks/useVehicleTypesQuery";
-import { Vehicle, VehicleType } from "../../types";
+import { Vehicle, VehicleTable, VehicleType } from "../../types";
 import { LocalText } from "../LocalText/LocalText";
 import { VehicleIcon } from "../VehicleIcon/VehicleIcon";
 import { VehicleTypeIcon } from "../VehicleTypeIcon/VehicleTypeIcon";
 import { LevelView } from "./LevelView";
 
 interface Props {
-  vehicle: Vehicle;
+  vehicle: VehicleTable;
 }
 
 export const ShipView: React.FC<Props> = ({ vehicle }) => {
-  const vehicleType = useVehicleTypesQuery({ type: vehicle.type });
+  const { data } = useVehicleTypesQuery();
+  if (!data) {
+    return null;
+  }
   const isPremium = vehicle.tags.includes("uiPremium");
+  const vehicleType = data[vehicle.type];
   return (
     <div className="cursor-pointer border h-[100%] w-[160px] mr-4 flex flex-col justify-between p-1 overflow-hidden relative hover:bg-gradient-to-t from-slate-500 to-transparent hover:border-slate-100">
       <div

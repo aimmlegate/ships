@@ -1,7 +1,7 @@
 import { usePremiumVehicleQuery } from "../../hooks/usePremiumVehicleQuery";
 import { useVehicleQuery } from "../../hooks/useVehicleQuery";
-import { useVehicleTypesAllQuery } from "../../hooks/useVehicleTypesAllQuery";
-import { NationName } from "../../types";
+import { useVehicleTypesQuery } from "../../hooks/useVehicleTypesQuery";
+import { NationName, VehicleType, VehicleTypeName } from "../../types";
 import { VehicleTypeLineView } from "./VehicleTypeLineView";
 
 interface Props {
@@ -11,18 +11,22 @@ interface Props {
 export const NationView: React.FC<Props> = ({ nation }) => {
   const vehicles = useVehicleQuery({ nation });
   const premiumVehicles = usePremiumVehicleQuery({ nation });
-  const vehicleTypes = useVehicleTypesAllQuery();
+  const { data } = useVehicleTypesQuery();
 
-  if (!vehicles || !vehicleTypes || !premiumVehicles) {
+  if (!vehicles || !data || !premiumVehicles) {
     return null;
   }
 
+  const vehicleTypesPairs: [VehicleTypeName, VehicleType][] = Object.keys(
+    data
+  ).map((key) => [key as VehicleTypeName, data[key as VehicleTypeName]]);
+
   return (
     <>
-      {vehicleTypes.map((vehicleType) => (
+      {vehicleTypesPairs.map(([typeName, vehicleType]) => (
         <VehicleTypeLineView
-          key={vehicleType.id}
-          line={vehicles[vehicleType.id]}
+          key={typeName}
+          line={vehicles[typeName]}
           lineName={vehicleType.localization.mark?.en ?? vehicleType.name}
         />
       ))}
