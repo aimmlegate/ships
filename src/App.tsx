@@ -9,12 +9,12 @@ import { useFillVehiclesDb } from './hooks/indexedDb/useFillVehiclesDb';
 import { useIsVehiclesDbEmpty } from './hooks/indexedDb/useIsVehiclesDbEmpty';
 import './index.css';
 
-// TODO: stale time / refetch config
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+      cacheTime: 1000 * 60 * 60 * 24,
+      staleTime: Infinity, // Set stale time to 0
+      refetchOnWindowFocus: false, // Disable refetch on window focus
     },
   },
 });
