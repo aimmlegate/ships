@@ -9,6 +9,8 @@ import { useFillVehiclesDb } from './hooks/indexedDb/useFillVehiclesDb';
 import { useIsVehiclesDbEmpty } from './hooks/indexedDb/useIsVehiclesDbEmpty';
 import './index.css';
 
+// TODO: stale time / refetch config
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
