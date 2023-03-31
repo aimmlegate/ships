@@ -7,6 +7,7 @@ import { useFillIndexedDB } from "./hooks/useFillIndexedDB";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
+import { CircularLoader } from "./components/CircularLoader/CircularLoader";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,11 +26,15 @@ function App() {
   const { loading } = useFillIndexedDB();
 
   if (isEmpty === undefined) {
-    return null;
+    return <CircularLoader />;
   }
 
   if (isEmpty && loading) {
-    return <span>loading</span>;
+    return (
+      <div className="h-[100vh]">
+        <CircularLoader />
+      </div>
+    );
   }
   return (
     <PersistQueryClientProvider
