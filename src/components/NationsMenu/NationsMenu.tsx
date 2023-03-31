@@ -21,7 +21,7 @@ export const NationsMenu: React.FC<Props> = ({
           key={nation.id}
           disabled={active === nation.name}
           onClick={() => handleSwitch(nation.name)}
-          className={`flex items-center p-2 h-[40px] mb-1 nation-button-gradient hover:nation-button-gradient-hover  ${
+          className={`flex items-center p-2 h-[40px] mb-1 nation-button-gradient hover:nation-button-gradient-hover ${
             active === nation.name ? "nation-button-gradient-active" : ""
           }`}
         >

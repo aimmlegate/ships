@@ -14,7 +14,7 @@ const NationSwitcher: React.FC<Props> = ({ nations }) => {
 
   const handleSwitch = (n: NationName) => {
     setNation(n);
-    window.scrollTo({ top: 0, left: 0 });
+    document.getElementById("root")?.scrollTo({ top: 0, left: 0 });
   };
   return (
     <Layout

@@ -41,41 +41,45 @@ export const NationView: React.FC<Props> = ({ nation }) => {
           return null;
         }
         return (
-          <LineStylingWrapper
-            key={typeName}
-            isActive={active === typeName}
-            isNonActive={active !== undefined && active !== typeName}
-          >
+          <div key={typeName}>
             <div
               onMouseOver={() => handleMouseOver(typeName)}
               onMouseOut={() => handleMouseOut()}
-              className="flex align-middle h-[40px] items-center sticky top-0 z-50"
+              className="flex pl-2 align-middle h-[40px] items-center sticky top-0 z-50"
             >
               <VehicleTypeIcon>{vehicleType.icons}</VehicleTypeIcon>
               <p className="text-white pl-1">
                 <LocalText>{vehicleType.localization.mark}</LocalText>
               </p>
             </div>
-            <VehicleTypeLineView line={line} />
-          </LineStylingWrapper>
+
+            <LineStylingWrapper
+              isActive={active === typeName}
+              isNonActive={active !== undefined && active !== typeName}
+            >
+              <VehicleTypeLineView line={line} />
+            </LineStylingWrapper>
+          </div>
         );
       })}
-
-      <LineStylingWrapper
-        isActive={active === "Premium"}
-        isNonActive={active !== undefined && active !== "Premium"}
-      >
+      <div>
         <div
           onMouseOver={() => handleMouseOver("Premium")}
           onMouseOut={() => handleMouseOut()}
-          className="flex align-middle justify-center pb-6"
+          className="flex pl-2 align-middle h-[40px] items-center sticky top-0 z-50"
         >
           <p className="text-amber-400">
             <span>Premium</span>
           </p>
         </div>
-        <VehicleTypeLineView line={premiumVehicles} />
-      </LineStylingWrapper>
+
+        <LineStylingWrapper
+          isActive={active === "Premium"}
+          isNonActive={active !== undefined && active !== "Premium"}
+        >
+          <VehicleTypeLineView line={premiumVehicles} />
+        </LineStylingWrapper>
+      </div>
     </>
   );
 };
@@ -93,7 +97,7 @@ const LineStylingWrapper: React.FC<PropsLineStylingWrapper> = ({
 }) => {
   return (
     <div
-      className={`flex flex-col space-y-4 mr-4 ml-4 transition-all ease-in ${
+      className={`flex flex-col space-y-4 mr-4 ml-4 transition-all ease-in pt-[40px] ${
         isActive ? "text-slate-100" : "text-slate-500"
       } ${isNonActive ? "opacity-50" : ""}`}
     >
