@@ -49,7 +49,7 @@ export const NationView: React.FC<Props> = ({ nation }) => {
             <div
               onMouseOver={() => handleMouseOver(typeName)}
               onMouseOut={() => handleMouseOut()}
-              className="flex align-middle justify-center pb-6"
+              className="flex align-middle h-[40px] items-center sticky top-0 z-50"
             >
               <VehicleTypeIcon>{vehicleType.icons}</VehicleTypeIcon>
               <p className="text-white pl-1">
@@ -70,7 +70,7 @@ export const NationView: React.FC<Props> = ({ nation }) => {
           onMouseOut={() => handleMouseOut()}
           className="flex align-middle justify-center pb-6"
         >
-          <p className="text-amber-300">
+          <p className="text-amber-400">
             <span>Premium</span>
           </p>
         </div>
