@@ -1,8 +1,8 @@
-import { Vehicle, VehicleType } from "../../types";
+import {  VehicleTable } from "../../types";
 import { ShipView } from "../ShipView/ShipView";
 
 type PropsVehicleTier = {
-  tier?: Vehicle[];
+  tier?: VehicleTable[];
 };
 
 export const VehicleTierView: React.FC<PropsVehicleTier> = ({ tier }) => {

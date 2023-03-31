@@ -9,7 +9,7 @@ interface UsePremiumVehicleQuery {
 
 export function usePremiumVehicleQuery({
   nation,
-}: UsePremiumVehicleQuery): Vehicle[] | undefined {
+}: UsePremiumVehicleQuery) {
   return useLiveQuery(async () => {
     const vehicles = await db.vehicles
       .where({ nation })

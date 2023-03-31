@@ -1,11 +1,11 @@
 import { groupBy } from "lodash";
 import { useState } from "react";
 import { TIERS } from "../../constants";
-import { Vehicle } from "../../types";
+import { Vehicle, VehicleTable } from "../../types";
 import { VehicleTierView } from "./VehicleTierView";
 
 interface Props {
-  line: Vehicle[];
+  line: VehicleTable[];
 }
 
 export const VehicleTypeLineView: React.FC<Props> = ({ line }) => {
