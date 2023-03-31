@@ -1,6 +1,4 @@
 export const TIERS = 11;
-export const CARD_WIDTH = 160;
-export const CARD_HEIGHT = 75;
 
 export const MEDIA_PATH = "https://glossary-wows-global.gcdn.co/icons/";
 export const VEHICLES_PATH =

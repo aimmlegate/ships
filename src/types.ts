@@ -22,17 +22,25 @@ export enum VehicleTypeName {
   Submarine = "Submarine",
 }
 
+export type LocalizationData = Record<string, string>;
+
+export type VehicleTypeIconType = "default" | "premium";
+
+export type VehicleTypeIconUrls = Record<VehicleTypeIconType, string>;
+
+export type VehicleIconUrls = Record<string, string>;
+
 export interface Localization {
-  mark?: Record<string, string>;
-  shortmark?: Record<string, string>;
-  description?: Record<string, string>;
+  mark?: LocalizationData;
+  shortmark?: LocalizationData;
+  description?: LocalizationData;
 }
 
 export interface Vehicle {
   id: string;
   level: number;
   name: string;
-  icons: Record<string, string>;
+  icons: VehicleIconUrls;
   type: VehicleTypeName;
   tags: string[];
   nation: NationName;
@@ -50,7 +58,7 @@ export interface Nation {
 
 export interface VehicleType {
   id: VehicleTypeName;
-  icons: Record<string, string>;
+  icons: VehicleTypeIconUrls
   sort_order: number;
   localization: Localization;
   name: string;

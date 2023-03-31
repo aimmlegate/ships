@@ -16,8 +16,9 @@ const levelsMap = new Map([
 
 interface Props {
   children: number;
+  className?: string;
 }
 
-export const LevelView: React.FC<Props> = ({ children }) => {
-  return <span>{levelsMap.get(children)}</span>;
+export const LevelView: React.FC<Props> = ({ children, className }) => {
+  return <span className={className}>{levelsMap.get(children)}</span>;
 };

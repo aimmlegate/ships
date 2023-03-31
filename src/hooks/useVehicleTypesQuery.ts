@@ -1,13 +1,17 @@
 import { useLiveQuery } from "dexie-react-hooks";
 
 import { db } from "../db";
-import { VehicleType } from "../types";
+import { VehicleType, VehicleTypeName } from "../types";
 
-export function useVehicleTypesQuery(): VehicleType[] | undefined {
+interface UseVehicleTypesQuery {
+  type: VehicleTypeName;
+}
+
+export function useVehicleTypesQuery({
+  type,
+}: UseVehicleTypesQuery): VehicleType | undefined {
   return useLiveQuery(async () => {
-    const vehiclesTypes = (await db.vehiclesTypes.toArray()).sort(
-      (a, b) => a.sort_order - b.sort_order
-    );
-    return vehiclesTypes;
-  }, []);
+    const [vehiclesType] = await db.vehiclesTypes.where({ id: type }).toArray();
+    return vehiclesType;
+  }, [type]);
 }

@@ -1,6 +1,6 @@
 import { usePremiumVehicleQuery } from "../../hooks/usePremiumVehicleQuery";
 import { useVehicleQuery } from "../../hooks/useVehicleQuery";
-import { useVehicleTypesQuery } from "../../hooks/useVehicleTypesQuery";
+import { useVehicleTypesAllQuery } from "../../hooks/useVehicleTypesAllQuery";
 import { NationName } from "../../types";
 import { VehicleTypeLineView } from "./VehicleTypeLineView";
 
@@ -11,7 +11,7 @@ interface Props {
 export const NationView: React.FC<Props> = ({ nation }) => {
   const vehicles = useVehicleQuery({ nation });
   const premiumVehicles = usePremiumVehicleQuery({ nation });
-  const vehicleTypes = useVehicleTypesQuery();
+  const vehicleTypes = useVehicleTypesAllQuery();
 
   if (!vehicles || !vehicleTypes || !premiumVehicles) {
     return null;
@@ -26,6 +26,7 @@ export const NationView: React.FC<Props> = ({ nation }) => {
           lineName={vehicleType.localization.mark?.en ?? vehicleType.name}
         />
       ))}
+
       <VehicleTypeLineView line={premiumVehicles} lineName={"Premium"} />
     </>
   );
