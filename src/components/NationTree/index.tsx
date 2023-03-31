@@ -51,7 +51,7 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
               className="flex pl-3 align-middle h-[40px] items-center sticky top-0 z-50"
             >
               <img src={`${MEDIA_PATH}${vehicleType.icons.default}`} />
-              <p className="text-white pl-1">
+              <p className="text-white pl-1 cursor-pointer">
                 <LocalText>{vehicleType.localization.mark}</LocalText>
               </p>
             </div>
@@ -71,7 +71,7 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
           onMouseOut={() => handleMouseOut()}
           className="flex pl-5 align-middle h-[40px] items-center sticky top-0 z-50"
         >
-          <p className="text-amber-400">
+          <p className="text-amber-400 cursor-pointer">
             <span>Premium</span>
           </p>
         </div>
