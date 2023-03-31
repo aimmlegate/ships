@@ -1,8 +1,8 @@
 import Tippy from '@tippyjs/react/headless';
 
-import { MEDIA_PATH } from '../../constants';
+import { MEDIA_PATH } from '../../utils/constants';
 import { useVehicleTypesQuery } from '../../hooks/reactQuery/useVehicleTypesQuery';
-import { VehicleTable } from '../../types';
+import { VehicleTable } from '../../utils/types';
 import { LevelIndicator } from '../LevelIndicator';
 import { LocalText } from '../LocalText';
 import { ShipDetailsCard } from './ShipDetailsCard';

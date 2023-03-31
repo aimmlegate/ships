@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { MEDIA_PATH } from '../../constants';
+import { MEDIA_PATH } from '../../utils/constants';
 import { usePremiumVehicleQuery } from '../../hooks/indexedDb/usePremiumVehicleQuery';
 import { useVehicleQuery } from '../../hooks/indexedDb/useVehicleQuery';
 import { useVehicleTypesQuery } from '../../hooks/reactQuery/useVehicleTypesQuery';
-import { NationName, VehicleType, VehicleTypeName } from '../../types';
+import { NationName, VehicleType, VehicleTypeName } from '../../utils/types';
 import { LocalText } from '../LocalText';
 import { StylingWrapper } from './StylingWrapper';
 import { VehicleTypeBranch } from './VehicleTypeBranch';

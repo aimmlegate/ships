@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Nation, NationName } from '../../types';
+import { Nation, NationName } from '../../utils/types';
 import { AppLayout } from '../AppLayout';
 import { NationTree } from '../NationTree';
 import { NationsMenu } from './NationsMenu';

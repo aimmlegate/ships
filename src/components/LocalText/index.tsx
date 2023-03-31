@@ -1,4 +1,4 @@
-import { LocalizationData } from '../../types';
+import { LocalizationData } from '../../utils/types';
 
 interface Props {
   children?: LocalizationData;

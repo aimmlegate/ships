@@ -1,7 +1,7 @@
 import { groupBy } from 'lodash';
 
-import { TIERS } from '../../constants';
-import { VehicleTable } from '../../types';
+import { TIERS } from '../../utils/constants';
+import { VehicleTable } from '../../utils/types';
 import { VehicleTierDisplay } from './VehicleTierDisplay';
 
 interface Props {

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { MEDIA_PATH } from '../../constants';
-import { Nation, NationName } from '../../types';
+import { MEDIA_PATH } from '../../utils/constants';
+import { Nation, NationName } from '../../utils/types';
 import { LocalText } from '../LocalText';
 
 interface Props {

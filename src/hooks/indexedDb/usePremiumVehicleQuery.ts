@@ -1,7 +1,7 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 
-import { db } from '../../db';
-import { NationName } from '../../types';
+import { db } from '../../utils/db';
+import { NationName } from '../../utils/types';
 
 interface UsePremiumVehicleQuery {
   nation: NationName;

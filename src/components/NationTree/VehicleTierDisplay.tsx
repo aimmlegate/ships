@@ -1,4 +1,4 @@
-import { VehicleTable } from '../../types';
+import { VehicleTable } from '../../utils/types';
 import { ShipCard } from '../ShipCard';
 
 type Props = {

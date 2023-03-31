@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { API } from '../../api';
-import { Nation } from '../../types';
+import { API } from '../../utils/api';
+import { Nation } from '../../utils/types';
 
 export function useNationsQuery() {
   return useQuery<Nation[]>(['nations'], async () => API.fetchNations(), {
