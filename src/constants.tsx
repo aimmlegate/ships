@@ -15,3 +15,6 @@ export const NATIONS_PATH =
   "https://res.cloudinary.com/doneqwi7x/raw/upload/v1680287049/ships/nations.json";
 export const VEHICLES_TYPES_PATH =
   "https://res.cloudinary.com/doneqwi7x/raw/upload/v1680287035/ships/vehicle_types_common.json";
+
+
+  //TODO: find cors-proxy

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Nation, NationName } from "../../types";
 import { AppLayout } from "../AppLayout";
-import { NationsMenu } from "../NationsMenu";
 import { NationTree } from "../NationTree";
+import { NationsMenu } from "./NationsMenu";
 
 interface Props {
   nations: Nation[];

@@ -1,13 +1,14 @@
 import "./index.css";
 
 import { QueryClient } from "@tanstack/react-query";
-import { useIsIndexedDBEmpty } from "./hooks/useIsIndexedDBEmpty";
-import { useFillIndexedDB } from "./hooks/useFillIndexedDB";
+
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { CircularLoader } from "./components/CircularLoader";
 import { Root } from "./components/Root";
+import { useFillVehiclesDb } from "./hooks/useFillVehiclesDB";
+import { useIsVehiclesDbEmpty } from "./hooks/useIsVehiclesDBEmpty";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,8 +23,8 @@ const persister = createSyncStoragePersister({
 });
 
 function App() {
-  const isEmpty = useIsIndexedDBEmpty();
-  const { loading } = useFillIndexedDB();
+  const isEmpty = useIsVehiclesDbEmpty();
+  const { loading } = useFillVehiclesDb();
 
   if (isEmpty === undefined) {
     return (

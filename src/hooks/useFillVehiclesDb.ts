@@ -3,7 +3,7 @@ import { API } from "../api";
 import { db } from "../db";
 import { VehicleTable, VehicleTypeName } from "../types";
 
-export function useFillIndexedDB(): { loading: boolean; error: string } {
+export function useFillVehiclesDb(): { loading: boolean; error: string } {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 

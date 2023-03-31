@@ -9,6 +9,8 @@ interface Props {
   handleSwitch: (n: NationName) => void;
 }
 
+// TODO: check hovers
+
 export const NationsMenu: React.FC<Props> = ({
   nations,
   handleSwitch,

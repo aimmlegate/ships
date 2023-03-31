@@ -1,12 +1,10 @@
 import { useVehicleTypesQuery } from "../../hooks/useVehicleTypesQuery";
 import { VehicleTable } from "../../types";
 import { LocalText } from "../LocalText";
-import { VehicleIcon } from "../VehicleIcon_DELETE/VehicleIcon";
-import { VehicleTypeIcon } from "../VehicleTypeIcon_DELETE/VehicleTypeIcon";
-import { LevelIndicator } from "../LevelIndicator";
 import Tippy from "@tippyjs/react/headless";
-import { ShipDetailsCard } from "../ShipDetailsCard";
 import { MEDIA_PATH } from "../../constants";
+import { LevelIndicator } from "../LevelIndicator";
+import { ShipDetailsCard } from "./ShipDetailsCard";
 
 interface Props {
   vehicle: VehicleTable;
@@ -19,6 +17,7 @@ export const ShipCard: React.FC<Props> = ({ vehicle }) => {
   }
   const isPremium = vehicle.tags.includes("uiPremium");
   const vehicleType = data[vehicle.type];
+  const iconUrlType = isPremium ? "premium" : "default";
   return (
     <Tippy
       placement="right"
@@ -40,9 +39,7 @@ export const ShipCard: React.FC<Props> = ({ vehicle }) => {
             isPremium ? "text-amber-400" : "text-white"
           }`}
         >
-          <VehicleTypeIcon type={isPremium ? "premium" : "default"}>
-            {vehicleType?.icons}
-          </VehicleTypeIcon>
+          <img src={`${MEDIA_PATH}${vehicleType.icons[iconUrlType]}`} />
           <LevelIndicator className="pl-1 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
             {vehicle.level}
           </LevelIndicator>
