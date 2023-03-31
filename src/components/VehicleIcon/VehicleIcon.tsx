@@ -5,16 +5,24 @@ import { VehicleIconUrls } from "../../types";
 interface Props {
   children?: VehicleIconUrls;
   type?: string;
+  alt?: string;
   className?: string;
 }
 
 export const VehicleIcon: React.FC<Props> = ({
   children,
   type = "default",
-  className
+  alt,
+  className,
 }) => {
   if (!children) {
     return null;
   }
-  return <img className={className} src={`${MEDIA_PATH}${children[type]}`} />;
+  return (
+    <img
+      alt={alt}
+      className={className}
+      src={`${MEDIA_PATH}${children[type]}`}
+    />
+  );
 };
