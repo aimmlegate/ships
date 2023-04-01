@@ -16,12 +16,15 @@ export function useVehiclesQueryByNation({ nation }: UseVehicleQuery): GroupedVe
   return useLiveQuery(async () => {
     const allVehicles = await db.vehicles
       .where({ nation })
-      .and((v) => v.tags.includes('buyable'))
-      .and((v) => !v.tags.includes('catalogueHidden'))
+      .and((v) => v.tags.includes('buyable') && !v.tags.includes('catalogueHidden'))
       .sortBy('level');
 
-    const premium = allVehicles.filter((v) => v.tags.includes('premium'));
-    const nonPremium = allVehicles.filter((v) => !v.tags.includes('premium'));
+    const premium = allVehicles.filter((v) =>
+      v.tags.some((tag) => tag === 'premium' || tag === 'uiPremium'),
+    );
+    const nonPremium = allVehicles.filter(
+      (v) => !v.tags.some((tag) => tag === 'premium' || tag === 'uiPremium'),
+    );
 
     const groupedByType = groupBy(nonPremium, 'type');
 
