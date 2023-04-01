@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { GroupedVehicles } from '../../hooks/indexedDb/useVehiclesQueryByNation';
 import { MEDIA_PATH } from '../../utils/constants';
-import { NationName, VehicleType, VehicleTypeName } from '../../utils/types';
+import { VehicleType, VehicleTypeName } from '../../utils/types';
 import { LocalText } from '../LocalText';
 import { LineHeader } from './LineHeader';
 import { VehicleTypeBranch } from './VehicleTypeBranch';
@@ -11,10 +11,9 @@ import { VehicleTypeBranchStyling } from './VehicleTypeBranchStyling';
 interface Props {
   vehicleTypesPairs: [VehicleTypeName, VehicleType][];
   vehicles: GroupedVehicles;
-  nation: NationName;
 }
 
-export const NationTreeStyling: React.FC<Props> = ({ vehicleTypesPairs, vehicles, nation }) => {
+export const NationTreeStyling: React.FC<Props> = ({ vehicleTypesPairs, vehicles }) => {
   const [active, setActive] = useState<VehicleTypeName | 'Premium'>();
 
   const handleMouseOver = (t: VehicleTypeName | 'Premium') => {

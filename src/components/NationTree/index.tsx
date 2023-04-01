@@ -19,5 +19,5 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
     (key) => [key as VehicleTypeName, vehiclesTypes[key as VehicleTypeName]],
   );
 
-  return <NationTreeStyling nation={nation} vehicleTypesPairs={vehicleTypesPairs} vehicles={vehicles} />;
+  return <NationTreeStyling vehicleTypesPairs={vehicleTypesPairs} vehicles={vehicles} />;
 };
