@@ -15,16 +15,12 @@ export function useVehicleQuery({
   return useLiveQuery(async () => {
     const vehicles = await db.vehicles
       .where({ nation })
-      .and((v) => {
-        const requiredTags = ['buyable'];
-        const excludedTags = ['catalogueHidden', 'premium', 'uiPremium'];
-
-        return (
-          v.tags.some((tag) => requiredTags.includes(tag)) &&
-          v.tags.every((tag) => !excludedTags.includes(tag))
-        );
-      })
+      .and((v) => v.tags.includes('buyable'))
+      .and((v) => !v.tags.includes('catalogueHidden'))
+      .and((v) => !v.tags.includes('premium'))
+      .and((v) => !v.tags.includes('uiPremium'))
       .sortBy('level');
+
     return groupBy(vehicles, 'type');
   }, [nation]);
 }

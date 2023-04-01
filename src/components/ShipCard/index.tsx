@@ -1,7 +1,8 @@
 import Tippy from '@tippyjs/react/headless';
+import cx from 'classnames';
 
-import { MEDIA_PATH } from '../../utils/constants';
 import { useVehicleTypesQuery } from '../../hooks/reactQuery/useVehicleTypesQuery';
+import { MEDIA_PATH } from '../../utils/constants';
 import { VehicleTable } from '../../utils/types';
 import { LevelIndicator } from '../LevelIndicator';
 import { LocalText } from '../LocalText';
@@ -32,9 +33,10 @@ export const ShipCard: React.FC<Props> = ({ vehicle }) => {
         className="cursor-pointer transition-all ease-in-out border h-[100%] w-[160px] mr-4 flex flex-col justify-between p-1 overflow-hidden relative hover:bg-gradient-to-t from-slate-500 to-transparent hover:border-slate-100"
       >
         <div
-          className={`font-medium flex items-center z-10 ${
-            isPremium ? 'text-amber-400' : 'text-white'
-          }`}
+          className={cx('font-medium flex items-center z-10', {
+            'text-amber-400': isPremium,
+            'text-white': !isPremium,
+          })}
         >
           <img src={`${MEDIA_PATH}${vehicleType.icons[iconUrlType]}`} />
           <LevelIndicator className="pl-1 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
@@ -47,9 +49,13 @@ export const ShipCard: React.FC<Props> = ({ vehicle }) => {
           src={`${MEDIA_PATH}${vehicle.icons.default}`}
         />
         <div
-          className={`text-right font-medium uppercase z-10 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
-            isPremium ? 'text-amber-400' : 'text-white'
-          }`}
+          className={cx(
+            'text-right font-medium uppercase z-10 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]',
+            {
+              'text-amber-400': isPremium,
+              'text-white': !isPremium,
+            },
+          )}
         >
           <LocalText>{vehicle.localization.shortmark}</LocalText>
         </div>

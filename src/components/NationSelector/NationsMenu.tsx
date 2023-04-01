@@ -1,4 +1,4 @@
-import React from 'react';
+import cx from 'classnames';
 
 import { MEDIA_PATH } from '../../utils/constants';
 import { Nation, NationName } from '../../utils/types';
@@ -10,8 +10,6 @@ interface Props {
   handleSwitch: (n: NationName) => void;
 }
 
-// TODO: check hovers
-
 export const NationsMenu: React.FC<Props> = ({ nations, handleSwitch, active }) => {
   return (
     <div className="flex flex-col">
@@ -20,9 +18,10 @@ export const NationsMenu: React.FC<Props> = ({ nations, handleSwitch, active }) 
           key={nation.id}
           disabled={active === nation.name}
           onClick={() => handleSwitch(nation.name)}
-          className={`flex items-center p-2 h-[40px] mb-1 nation-button-gradient hover:nation-button-gradient-hover ${
-            active === nation.name ? 'nation-button-gradient-active' : ''
-          }`}
+          className={cx(
+            'flex items-center p-2 h-[40px] mb-1 nation-button-gradient hover:nation-button-gradient-hover',
+            { 'nation-button-gradient-active': active === nation.name },
+          )}
         >
           <img
             className="w-[35px] pr-2"
@@ -30,9 +29,10 @@ export const NationsMenu: React.FC<Props> = ({ nations, handleSwitch, active }) 
             src={`${MEDIA_PATH}${nation.icons.tiny}`}
           />
           <p
-            className={`${
-              active === nation.name ? 'text-black' : 'text-white'
-            } font-medium uppercase`}
+            className={cx('font-medium uppercase', {
+              'text-black': active === nation.name,
+              'text-white': active !== nation.name,
+            })}
           >
             <LocalText>{nation.localization.mark}</LocalText>
           </p>

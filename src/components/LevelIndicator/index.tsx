@@ -1,5 +1,3 @@
-import React from 'react';
-
 const levelsMap = new Map([
   [1, 'Ⅰ'],
   [2, 'Ⅱ'],

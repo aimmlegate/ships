@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface Props {
   sidebar: React.ReactNode;
   content: React.ReactNode;

@@ -1,7 +1,7 @@
-import React from 'react';
+import cx from 'classnames';
 
-import { MEDIA_PATH } from '../../utils/constants';
 import { useNationsQuery } from '../../hooks/reactQuery/useNationsQuery';
+import { MEDIA_PATH } from '../../utils/constants';
 import { NationName, VehicleTable, VehicleType } from '../../utils/types';
 import { LevelIndicator } from '../LevelIndicator';
 import { LocalText } from '../LocalText';
@@ -23,9 +23,10 @@ export const ShipDetailsCard: React.FC<Props> = ({ vehicle, vehicleType, nation 
     <div className="border border-slate-500 bg-gray-900 w-[250px] z-10">
       <div className="h-[150px] relative  border-b border-slate-700">
         <div
-          className={`flex items-center  uppercase font-medium relative z-10 p-1 ${
-            isPremium ? 'text-amber-400' : 'text-white'
-          }`}
+          className={cx('flex items-center  uppercase font-medium relative z-10 p-1', {
+            'text-amber-400': isPremium,
+            'text-white': !isPremium,
+          })}
         >
           <img
             className="pr-1"
