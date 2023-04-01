@@ -26,7 +26,7 @@ export const ShipCard: React.FC<Props> = ({ vehicle }) => {
   return (
     <Popover
       referenceNode={
-        <div className="cursor-pointer transition-all ease-in-out border h-[100%] w-[160px] mr-4 flex flex-col justify-between p-1 overflow-hidden relative hover:bg-gradient-to-t from-slate-500 to-transparent hover:border-slate-100">
+        <div className="fade-in cursor-pointer transition-all ease-in-out border h-[100%] w-[160px] mr-4 flex flex-col justify-between p-1 overflow-hidden relative hover:bg-gradient-to-t from-slate-500 to-transparent hover:border-slate-100">
           <div
             className={cx('font-medium flex items-center z-10', {
               'text-amber-400': isPremium,

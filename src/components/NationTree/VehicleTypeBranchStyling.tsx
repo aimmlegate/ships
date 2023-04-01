@@ -6,7 +6,7 @@ interface Props {
   isNonActive?: boolean;
 }
 
-export const StylingWrapper: React.FC<Props> = ({ children, isActive, isNonActive }) => {
+export const VehicleTypeBranchStyling: React.FC<Props> = ({ children, isActive, isNonActive }) => {
   return (
     <div
       className={cx(
