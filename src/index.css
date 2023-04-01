@@ -42,3 +42,12 @@
     opacity: 1;
   }
 }
+
+#root::-webkit-scrollbar {
+  display: none;
+}
+
+#root {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
