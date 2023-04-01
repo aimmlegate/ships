@@ -20,10 +20,10 @@ export const ShipDetailsCard: React.FC<Props> = ({ vehicle, vehicleType, nation 
   const currentNation = data.find((n) => n.name === nation);
   const isPremium = vehicle.tags.some((tag) => tag === 'premium' || tag === 'uiPremium');
   return (
-    <div className="border border-slate-500 bg-gray-900 w-[250px] z-10">
-      <div className="h-[150px] relative  border-b border-slate-700">
+    <div className="border border-slate-500 bg-gray-900 w-[250px] z-10 mr-4">
+      <div className="h-[150px] relative border-b border-slate-700">
         <div
-          className={cx('flex items-center  uppercase font-medium relative z-10 p-1', {
+          className={cx('flex items-center uppercase font-medium relative z-10 p-1', {
             'text-amber-400': isPremium,
             'text-white': !isPremium,
           })}

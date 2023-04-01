@@ -9,11 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.22.2",
     "@tanstack/query-sync-storage-persister": "^4.27.1",
     "@tanstack/react-query": "^4.28.0",
     "@tanstack/react-query-devtools": "^4.28.0",
     "@tanstack/react-query-persist-client": "^4.28.0",
-    "@tippyjs/react": "^4.2.6",
     "classnames": "^2.3.2",
     "dexie": "^3.2.3",
     "dexie-react-hooks": "^1.1.3",
