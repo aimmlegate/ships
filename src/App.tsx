@@ -28,19 +28,11 @@ function App() {
   const { loading } = useFillVehiclesDb();
 
   if (isEmpty === undefined) {
-    return (
-      <div className="h-[100vh]">
-        <CircularLoader />
-      </div>
-    );
+    return <CircularLoader />;
   }
 
   if (isEmpty && loading) {
-    return (
-      <div className="h-[100vh]">
-        <CircularLoader />
-      </div>
-    );
+    return <CircularLoader />;
   }
   return (
     <PersistQueryClientProvider client={queryClient} persistOptions={{ persister: persister }}>
