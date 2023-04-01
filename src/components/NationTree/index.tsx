@@ -1,8 +1,6 @@
-import { animated, useSpring } from '@react-spring/web';
 import { useState } from 'react';
 
-import { usePremiumVehicleQuery } from '../../hooks/indexedDb/usePremiumVehicleQuery';
-import { useVehicleQuery } from '../../hooks/indexedDb/useVehicleQuery';
+import { useVehiclesQueryByNation } from '../../hooks/indexedDb/useVehiclesQueryByNation';
 import { useVehicleTypesQuery } from '../../hooks/reactQuery/useVehicleTypesQuery';
 import { MEDIA_PATH } from '../../utils/constants';
 import { NationName, VehicleType, VehicleTypeName } from '../../utils/types';
@@ -15,19 +13,11 @@ interface Props {
 }
 
 export const NationTree: React.FC<Props> = ({ nation }) => {
-  const vehicles = useVehicleQuery({ nation });
-  const premiumVehicles = usePremiumVehicleQuery({ nation });
-  const { data } = useVehicleTypesQuery();
+  const vehicles = useVehiclesQueryByNation({ nation });
+  const { data: vehiclesTypes } = useVehicleTypesQuery();
   const [active, setActive] = useState<VehicleTypeName | 'Premium'>();
-  const [props, api] = useSpring(
-    () => ({
-      from: { opacity: 0 },
-      to: { opacity: 1 },
-    }),
-    [],
-  );
 
-  if (!vehicles || !data || !premiumVehicles) {
+  if (!vehicles || !vehiclesTypes) {
     return null;
   }
 
@@ -39,10 +29,9 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
     setActive(undefined);
   };
 
-  const vehicleTypesPairs: [VehicleTypeName, VehicleType][] = Object.keys(data).map((key) => [
-    key as VehicleTypeName,
-    data[key as VehicleTypeName],
-  ]);
+  const vehicleTypesPairs: [VehicleTypeName, VehicleType][] = Object.keys(vehiclesTypes).map(
+    (key) => [key as VehicleTypeName, vehiclesTypes[key as VehicleTypeName]],
+  );
 
   return (
     <div className="flex justify-center">
@@ -73,24 +62,26 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
           </div>
         );
       })}
-      <div>
-        <div
-          onMouseOver={() => handleMouseOver('Premium')}
-          onMouseOut={() => handleMouseOut()}
-          className="flex pl-5 align-middle h-[40px] items-center sticky top-0 z-50"
-        >
-          <p className="text-amber-400 cursor-pointer">
-            <span>Premium</span>
-          </p>
-        </div>
+      {vehicles.Premium && (
+        <div>
+          <div
+            onMouseOver={() => handleMouseOver('Premium')}
+            onMouseOut={() => handleMouseOut()}
+            className="flex pl-5 align-middle h-[40px] items-center sticky top-0 z-50"
+          >
+            <p className="text-amber-400 cursor-pointer">
+              <span>Premium</span>
+            </p>
+          </div>
 
-        <StylingWrapper
-          isActive={active === 'Premium'}
-          isNonActive={active !== undefined && active !== 'Premium'}
-        >
-          <VehicleTypeBranch line={premiumVehicles} />
-        </StylingWrapper>
-      </div>
+          <StylingWrapper
+            isActive={active === 'Premium'}
+            isNonActive={active !== undefined && active !== 'Premium'}
+          >
+            <VehicleTypeBranch line={vehicles.Premium} />
+          </StylingWrapper>
+        </div>
+      )}
     </div>
   );
 };
