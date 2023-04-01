@@ -12,4 +12,4 @@
 -   Vite
 -   React-Query
 -   Dexie (для работы с IndexedDB)
--   Tailwindcss
+-   Tailwind
