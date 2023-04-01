@@ -1,14 +1,17 @@
 import { LocalizationData } from '../../utils/types';
+import { useLanguage } from '../LanguageContext';
 
 interface Props {
   children?: LocalizationData;
-  lang?: string;
   className?: string;
 }
 
-export const LocalText: React.FC<Props> = ({ children, className, lang = 'en' }) => {
-  if (!children) {
+export const LocalText: React.FC<Props> = ({ children, className }) => {
+  const { language } = useLanguage();
+
+  if (!children || !language) {
     return <span className={className}>#no-translation</span>;
   }
-  return <span className={className}>{children[lang]}</span>;
+
+  return <span className={className}>{children[language]}</span>;
 };

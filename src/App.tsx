@@ -8,6 +8,7 @@ import { Root } from './components/Root';
 import { useFillVehiclesDb } from './hooks/indexedDb/useFillVehiclesDb';
 import { useIsVehiclesDbEmpty } from './hooks/indexedDb/useIsVehiclesDbEmpty';
 import './index.css';
+import { LanguageProvider } from './components/LanguageContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,7 +37,9 @@ function App() {
   }
   return (
     <PersistQueryClientProvider client={queryClient} persistOptions={{ persister: persister }}>
-      <Root />
+      <LanguageProvider>
+        <Root />
+      </LanguageProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </PersistQueryClientProvider>
   );

@@ -22,7 +22,29 @@ export enum VehicleTypeName {
   Submarine = 'Submarine',
 }
 
-export type LocalizationData = Record<string, string>;
+export enum Language {
+  'ru' = 'ru',
+  'fr' = 'fr',
+  'en' = 'en',
+  'nl' = 'nl',
+  'uk' = 'uk',
+  'pt_br' = 'pt_br',
+  'zh_cn' = 'zh_cn',
+  'tr' = 'tr',
+  'de' = 'de',
+  'ko' = 'ko',
+  'it' = 'it',
+  'pl' = 'pl',
+  'th' = 'th',
+  'cs' = 'cs',
+  'es_mx' = 'es_mx',
+  'zh_sg' = 'zh_sg',
+  'ja' = 'ja',
+  'es' = 'es',
+  'zh_tw' = 'zh_tw',
+}
+
+export type LocalizationData = Record<Language, string>;
 
 export type VehicleTypeIconType = 'default' | 'premium';
 
