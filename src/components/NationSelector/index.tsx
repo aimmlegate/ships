@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { Nation, NationName } from '../../utils/types';
 import { AppLayout } from '../AppLayout';
+import { LanguageSelect } from '../LanguageSelect';
 import { NationTree } from '../NationTree';
 import { NationsMenu } from './NationsMenu';
 
@@ -18,7 +19,14 @@ export const NationSelector: React.FC<Props> = ({ nations }) => {
   };
   return (
     <AppLayout
-      sidebar={<NationsMenu active={nation} nations={nations} handleSwitch={handleSwitch} />}
+      sidebar={
+        <>
+          <div className='p-3 pb-10'>
+            <LanguageSelect />
+          </div>
+          <NationsMenu active={nation} nations={nations} handleSwitch={handleSwitch} />
+        </>
+      }
       content={<NationTree nation={nation} />}
     />
   );
