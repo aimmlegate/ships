@@ -1,9 +1,10 @@
+import { animated, useSpring } from '@react-spring/web';
 import { useState } from 'react';
 
-import { MEDIA_PATH } from '../../utils/constants';
 import { usePremiumVehicleQuery } from '../../hooks/indexedDb/usePremiumVehicleQuery';
 import { useVehicleQuery } from '../../hooks/indexedDb/useVehicleQuery';
 import { useVehicleTypesQuery } from '../../hooks/reactQuery/useVehicleTypesQuery';
+import { MEDIA_PATH } from '../../utils/constants';
 import { NationName, VehicleType, VehicleTypeName } from '../../utils/types';
 import { LocalText } from '../LocalText';
 import { StylingWrapper } from './StylingWrapper';
@@ -18,6 +19,13 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
   const premiumVehicles = usePremiumVehicleQuery({ nation });
   const { data } = useVehicleTypesQuery();
   const [active, setActive] = useState<VehicleTypeName | 'Premium'>();
+  const [props, api] = useSpring(
+    () => ({
+      from: { opacity: 0 },
+      to: { opacity: 1 },
+    }),
+    [],
+  );
 
   if (!vehicles || !data || !premiumVehicles) {
     return null;
@@ -37,7 +45,7 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
   ]);
 
   return (
-    <>
+    <div className="flex justify-center">
       {vehicleTypesPairs.map(([typeName, vehicleType]) => {
         const line = vehicles[typeName];
         if (!line) {
@@ -83,6 +91,6 @@ export const NationTree: React.FC<Props> = ({ nation }) => {
           <VehicleTypeBranch line={premiumVehicles} />
         </StylingWrapper>
       </div>
-    </>
+    </div>
   );
 };

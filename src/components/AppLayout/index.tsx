@@ -10,7 +10,7 @@ export const AppLayout: React.FC<Props> = ({ sidebar, content }) => {
       <div className="min-w-[250px] fixed pt-[40px]  z-40 h-[100%] side-menu">
         <div className="sticky pt-[80px]">{sidebar}</div>
       </div>
-      <div className="flex justify-center ml-[250px] flex-1">{content}</div>
+      <div className="ml-[250px] flex-1">{content}</div>
     </div>
   );
 };
