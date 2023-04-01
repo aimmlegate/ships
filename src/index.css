@@ -43,14 +43,14 @@
   }
 }
 
-#root::-webkit-scrollbar {
+/* #root::-webkit-scrollbar {
   display: none;
 }
 
 #root {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
+} */
 
 body {
   position: relative;
