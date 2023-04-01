@@ -69,4 +69,17 @@ body:before {
   background-repeat: repeat;
   background-position: 50% 0;
   pointer-events: none;
+  z-index: -1;
+}
+
+.nation-ascent {
+  transition: background 0.5s ease-in;
+  width: 1000px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: -500px;
+  opacity: 0.4;
+  transform: scaleY(2);
+  z-index: -1;
 }

@@ -10,21 +10,31 @@ interface Props {
   handleSwitch: (n: NationName) => void;
 }
 
+function decimalToHex(decimal: number): string {
+  return '#' + decimal.toString(16).toUpperCase().padStart(6, '0');
+}
+
 export const NationsMenu: React.FC<Props> = ({ nations, handleSwitch, active }) => {
+  const activeNation = nations.find((n) => n.name === active);
   return (
     <div className="flex flex-col">
+      {activeNation && (
+        <div
+          className="nation-ascent"
+          style={{
+            backgroundColor: decimalToHex(activeNation.color),
+          }}
+        />
+      )}
       {nations.map((nation) => (
         <button
           key={nation.id}
           disabled={active === nation.name}
           onClick={() => handleSwitch(nation.name)}
-          className={cx(
-            'flex items-center p-2 h-[40px] mb-1 nation-button-gradient',
-            {
-              'nation-button-gradient-active': active === nation.name,
-              'nation-button-gradient': active !== nation.name,
-            },
-          )}
+          className={cx('flex items-center p-2 h-[40px] mb-1 nation-button-gradient', {
+            'nation-button-gradient-active': active === nation.name,
+            'nation-button-gradient': active !== nation.name,
+          })}
         >
           <img
             className="w-[35px] pr-2"
