@@ -79,7 +79,7 @@ body:before {
   position: fixed;
   top: 0px;
   left: -500px;
-  opacity: 0.4;
+  opacity: 0.1;
   transform: scaleY(2);
   z-index: -1;
 }
