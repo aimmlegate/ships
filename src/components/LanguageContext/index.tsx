@@ -16,11 +16,35 @@ interface Props {
   children: ReactNode;
 }
 
+const initialValue = Language.en;
+
 export const LanguageProvider: React.FC<Props> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>(Language.en);
+  const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window === 'undefined') {
+      return initialValue;
+    }
+    try {
+      const item = window.localStorage.getItem('language');
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.log(error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value: Language) => {
+    try {
+      setLanguage(value);
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('language', JSON.stringify(value));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleLanguageChange = (selectedLanguage: Language) => {
-    setLanguage(selectedLanguage);
+    setValue(selectedLanguage);
   };
 
   return (
